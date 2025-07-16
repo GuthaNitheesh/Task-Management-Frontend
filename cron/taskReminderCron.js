@@ -1,6 +1,7 @@
 const cron = require("node-cron");
 const Task = require("../models/taskModel"); // note: relative path
-const { sendReminderMail } = require("../utils/mailer");
+const { sendReminderMail } = require("../utils/emailHelpers");
+
 
 // Runs at 8:30 AM every day
 cron.schedule("30 7 * * *", async () => {
