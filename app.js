@@ -14,7 +14,7 @@ const cookieParser = require("cookie-parser");
 const Task = require("./models/taskModel.js");
 
 
-// require("./cron/taskReminderCron");
+require("./cron/taskReminderCron");
 // --------------------------------------------------------------
 const app = express(); // we are creating a server using express
 // --------------------------------------------------------------
