@@ -22,11 +22,15 @@ const app = express(); // we are creating a server using express
 app.use(morgan("dev")); // this is a third-party middleware (written by someone else) which logs the request to console in better way
 
 
-app.use(cors({
-  origin: "https://frontend-qyj7-guthanitheeshs-projects.vercel.app",
-  credentials: true
-}));
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://frontend-qyj7-guthanitheeshs-projects.vercel.app"
+];
 
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 app.use(express.json()); // this will read the request body stream and serializes it into javascript object and attach it on the req object :: req.body
 
 app.use((req, res, next) => {
