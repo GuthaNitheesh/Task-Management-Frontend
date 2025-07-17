@@ -23,8 +23,9 @@ app.use(morgan("dev")); // this is a third-party middleware (written by someone 
 
 
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://frontend-qyj7-guthanitheeshs-projects.vercel.app"
+  "https://frontend-qyj7-git-main-guthanitheeshs-projects.vercel.app",
+  "https://frontend-qyj7-guthanitheeshs-projects.vercel.app", // if production domain
+  "http://localhost:5173" // optional for local dev
 ];
 
 app.use(cors({
