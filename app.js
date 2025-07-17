@@ -252,10 +252,12 @@ app.post("/users/login", async (req, res) => {
         );
 
         // ✅ Fix applied here: set cookie for localhost (non-HTTPS)
+        const oneDay = 24 * 60 * 60 * 1000;
         res.cookie("authorization", token, {
             httpOnly: true,
             secure: true,       // ✅ Accepts cookies over HTTP on localhost
-            sameSite: "none",     // ✅ Works safely on same-origin
+            sameSite: "none", 
+            maxAge: oneDay       // ✅ Works safely on same-origin
         });
 
 
