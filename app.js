@@ -252,8 +252,8 @@ app.post("/users/login", async (req, res) => {
         // ✅ Fix applied here: set cookie for localhost (non-HTTPS)
         res.cookie("authorization", token, {
             httpOnly: true,
-            secure: false,       // ✅ Accepts cookies over HTTP on localhost
-            sameSite: "lax",     // ✅ Works safely on same-origin
+            secure: true,       // ✅ Accepts cookies over HTTP on localhost
+            sameSite: "none",     // ✅ Works safely on same-origin
         });
 
 
