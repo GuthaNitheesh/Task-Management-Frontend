@@ -26,19 +26,10 @@ const allowedOrigins = [
   "https://frontend-qyj7-guthanitheeshs-projects.vercel.app"
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
-
+app.use(cors({
+  origin: "https://frontend-qyj7-guthanitheeshs-projects.vercel.app", // ✅ Add your frontend domain here
+  credentials: true // ✅ If you use cookies/auth
+}));
 app.use(express.json()); // this will read the request body stream and serializes it into javascript object and attach it on the req object :: req.body
 
 app.use((req, res, next) => {
