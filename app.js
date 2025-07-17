@@ -21,15 +21,23 @@ const app = express(); // we are creating a server using express
 
 app.use(morgan("dev")); // this is a third-party middleware (written by someone else) which logs the request to console in better way
 
-// app.use(cors()); // this code actually allows all origins / domains to talk with backend
-app.use(
-    cors({
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://frontend-qyj7-guthanitheeshs-projects.vercel.app"
+];
 
-        origin: process.env.FRONTEND_URL,
-        credentials: true,
-    })
-); // this code allows only the frontend with origin "http://localhost:5173" to talk with backend and
-// also allows him to send and receive the cookies
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(express.json()); // this will read the request body stream and serializes it into javascript object and attach it on the req object :: req.body
 
