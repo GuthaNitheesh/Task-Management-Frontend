@@ -467,7 +467,7 @@ app.delete("/tasks/:taskId", async (req, res) => {
 });
 
 
-app.get("/users/logout", (req, res) => {
+app.post("/users/logout", (req, res) => {
     try {
         res.clearCookie("authorization");
         res.json({
